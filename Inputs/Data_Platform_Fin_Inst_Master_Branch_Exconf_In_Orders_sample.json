@@ -1,0 +1,19 @@
+{
+	"connection_key": "request",
+	"result": true,
+	"redis_key": "abcdefg",
+	"api_status_code": 200,
+	"runtime_session_id": "boi9ar543dg91ipdnspi099u231280ab0v8af0ew",
+	"business_partner": 201,
+	"filepath": "/var/lib/aion/Data/rededge_sdc/abcdef.json",
+	"service_label": "PAYMENT_REQUISITION",
+	"FinInstMasterBranch": {
+		"FinInstCountry": "JP",
+		"FinInstCode": "0001",
+		"FinInstBranchCode": "001",
+		"FinInstFullCode": "0001001"
+	},
+	"api_schema": "DPFMPaymentRequisitionCreates",
+	"accepter": ["All"],
+	"deleted": false
+}
