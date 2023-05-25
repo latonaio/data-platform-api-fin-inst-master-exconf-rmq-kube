@@ -9,6 +9,7 @@ import (
 	"github.com/latonaio/golang-logging-library-for-data-platform/logger"
 	database "github.com/latonaio/golang-mysql-network-connector"
 	rabbitmq "github.com/latonaio/rabbitmq-golang-client-for-data-platform"
+	"golang.org/x/xerrors"
 )
 
 type ExistenceConf struct {
@@ -51,6 +52,7 @@ func (e *ExistenceConf) Conf(msg rabbitmq.RabbitmqMessage) interface{} {
 		goto endProcess
 	}
 
+	err = xerrors.Errorf("can not get exconf check target")
 endProcess:
 	if err != nil {
 		e.l.Error(err)
@@ -83,6 +85,7 @@ func (e *ExistenceConf) confFinInstMasterGeneral(input *dpfm_api_input_reader.Ge
 		e.l.Error(err)
 		return &exconf
 	}
+	defer rows.Close()
 
 	exconf.ExistenceConf = rows.Next()
 	return &exconf
@@ -122,6 +125,7 @@ func (e *ExistenceConf) ConfFinInstMasterBranch(input *dpfm_api_input_reader.Bra
 		e.l.Error(err)
 		return &exconf
 	}
+	defer rows.Close()
 
 	exconf.ExistenceConf = rows.Next()
 	return &exconf
